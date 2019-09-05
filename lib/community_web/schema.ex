@@ -15,16 +15,13 @@ defmodule CommunityWeb.Schema do
     end
   end
 
+  mutation do
+    field :create_link, :link do
+      arg :url, non_null(:string)
+      arg :description, non_null(:string)
 
-  # query do
-  # # @desc "Get an item by ID"
-  #   field :item, :item do
+      resolve &NewsResolver.create_link/3
+    end
+  end
 
-  #     @desc "The ID of the item"
-  #     arg :id, type: non_null(:id)
-
-  #     resolve fn %{id: id}, _ ->
-  #       {:ok, Map.get(@fake_db, id)}
-  #   end
-  # end
 end
